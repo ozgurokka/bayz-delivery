@@ -19,4 +19,7 @@ public interface OrderService {
 
     public Order findById(Long orderId);
 
+    public List<Order> findTopNByOrderPriceDesc(int max);
+
+
 }

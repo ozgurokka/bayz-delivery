@@ -3,6 +3,7 @@ package com.bayzdelivery.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Objects;
 
@@ -26,7 +27,7 @@ public class Order implements Serializable {
     String item;
 
     @Column(name = "price")
-    Long price;
+    BigDecimal price;
 
     @ManyToOne
     @JoinColumn(name = "delivery_man_id", referencedColumnName = "id")
@@ -45,11 +46,11 @@ public class Order implements Serializable {
     }
 
 
-    public Long getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

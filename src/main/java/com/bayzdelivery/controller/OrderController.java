@@ -36,4 +36,9 @@ public class OrderController {
         return ResponseEntity.notFound().build();
     }
 
+    @GetMapping(path = "/api/order/max/{max}")
+    public ResponseEntity<List<Order>> getAllOrders(@PathVariable(name="max", required=true)int max) {
+        return ResponseEntity.ok(orderService.findTopNByOrderPriceDesc(max));
+    }
+
 }

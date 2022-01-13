@@ -3,6 +3,8 @@ package com.bayzdelivery.service;
 import com.bayzdelivery.model.Order;
 import com.bayzdelivery.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,6 +36,13 @@ public class OrderServiceImpl implements OrderService{
     public Order findById(Long orderId) {
         Optional<Order> dbOrder = orderRepository.findById(orderId);
         return dbOrder.orElse(null);
+    }
+
+    @Override
+    public List<Order> findTopNByOrderPriceDesc(int max) {
+        List<Order> orderList = new ArrayList<>();
+        orderRepository.findAll(PageRequest.of(0, max, Sort.by("price").descending())).forEach(orderList::add);
+        return orderList;
     }
 
 }
