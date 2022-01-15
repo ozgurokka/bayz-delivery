@@ -2,6 +2,7 @@ package com.bayzdelivery.service;
 
 import com.bayzdelivery.model.Order;
 
+import java.time.Instant;
 import java.util.List;
 
 
@@ -19,7 +20,7 @@ public interface OrderService {
 
     public Order findById(Long orderId);
 
-    public List<Order> findTopNByOrderPriceDesc(int max);
+    public List findDelayOrder(int delayTimeinMin);
 
 
 }

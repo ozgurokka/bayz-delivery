@@ -1,11 +1,14 @@
 package com.bayzdelivery.controller;
 
+import com.bayzdelivery.configuration.View;
 import com.bayzdelivery.model.Order;
 import com.bayzdelivery.service.OrderService;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
 import java.util.List;
 
 /**
@@ -34,11 +37,6 @@ public class OrderController {
             return ResponseEntity.ok(order);
         }
         return ResponseEntity.notFound().build();
-    }
-
-    @GetMapping(path = "/api/order/max/{max}")
-    public ResponseEntity<List<Order>> getAllOrders(@PathVariable(name="max", required=true)int max) {
-        return ResponseEntity.ok(orderService.findTopNByOrderPriceDesc(max));
     }
 
 }

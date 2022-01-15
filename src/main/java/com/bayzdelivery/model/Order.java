@@ -1,5 +1,8 @@
 package com.bayzdelivery.model;
 
+import com.bayzdelivery.configuration.View;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -29,13 +32,20 @@ public class Order implements Serializable {
     @Column(name = "price")
     BigDecimal price;
 
-    @ManyToOne
-    @JoinColumn(name = "delivery_man_id", referencedColumnName = "id")
-    Person deliveryMan;
+    @NotNull
+    @Column(name = "order_time")
+    Instant orderTime;
 
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     Person customer;
+
+    @Column(name = "deliver_flag")
+    int deliverFlag;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public Long getId() {
         return id;
@@ -43,35 +53,6 @@ public class Order implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public Person getDeliveryMan() {
-        return deliveryMan;
-    }
-
-    public void setDeliveryMan(Person deliveryMan) {
-        this.deliveryMan = deliveryMan;
-    }
-
-    public Person getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Person customer) {
-        this.customer = customer;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public String getItem() {
@@ -82,32 +63,36 @@ public class Order implements Serializable {
         this.item = item;
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return Objects.equals(id, order.id) &&
-                Objects.equals(item, order.item) &&
-                Objects.equals(price, order.price) &&
-                Objects.equals(deliveryMan, order.deliveryMan) &&
-                Objects.equals(customer, order.customer);
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, item, price, deliveryMan, customer);
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", item='" + item + '\'' +
-                ", price=" + price +
-                ", deliveryMan=" + deliveryMan +
-                ", customer=" + customer +
-                '}';
+    public Instant getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(Instant orderTime) {
+        this.orderTime = orderTime;
+    }
+
+
+    public Person getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Person customer) {
+        this.customer = customer;
+    }
+
+    public int getDeliverFlag() {
+        return deliverFlag;
+    }
+
+    public void setDeliverFlag(int deliverFlag) {
+        this.deliverFlag = deliverFlag;
     }
 }
