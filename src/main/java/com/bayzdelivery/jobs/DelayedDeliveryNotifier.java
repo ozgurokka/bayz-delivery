@@ -31,7 +31,7 @@ public class DelayedDeliveryNotifier {
         List<Order> delayedOrders = orderService.findDelayOrder(DeliveryConsts.DELIVERY_INTERVAL_IN_MIN);
 
         if(delayedOrders.size() > 0){
-            notifyCustomerSupport();
+            notifyCustomerSupport(delayedOrders);
         }
 
     }
@@ -43,7 +43,9 @@ public class DelayedDeliveryNotifier {
      * So that this method should run in an async way.
      */
     @Async
-    public void notifyCustomerSupport() {
-        LOG.info("Customer support team is notified!");
+    public void notifyCustomerSupport(List<Order> delayedOrders) {
+
+        //delayed order list will send in email or p.notification etc.
+        LOG.info("Customer support team is notified! DelayedOrder Count "+ delayedOrders.size());
     }
 }

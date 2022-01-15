@@ -145,4 +145,18 @@ public class Delivery implements Serializable{
   public int hashCode() {
     return Objects.hash(id, startTime, endTime, distance, comission, deliveryMan, customer, order);
   }
+
+  @Override
+  public String toString() {
+    return "Delivery{" +
+            "id=" + id +
+            ", startTime=" + startTime +
+            ", endTime=" + endTime +
+            ", distance=" + distance +
+            ", comission=" + comission +
+            ", deliveryMan=" + deliveryMan +
+            ", customer=" + customer +
+            ", order=" + order +
+            '}';
+  }
 }

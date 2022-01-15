@@ -53,4 +53,6 @@ public class PersonType {
 
     @Column(name = "name")
     String name;
+
+
 }

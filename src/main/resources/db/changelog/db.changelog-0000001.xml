@@ -81,6 +81,20 @@
             <column name="id" value="2"/>
             <column name="name" value="DELIVERY_MAN"/>
         </insert>
+        <insert tableName="person">
+            <column name="id" value="1"/>
+            <column name="name" value="ozgur"/>
+            <column name="email" value="ozgur@gmail.com"/>
+            <column name="registration_number" value="1"/>
+            <column name="person_type" value="1"/>
+        </insert>
+        <insert tableName="person">
+            <column name="id" value="2"/>
+            <column name="name" value="faruk"/>
+            <column name="email" value="faruk@gmail.com"/>
+            <column name="registration_number" value="2"/>
+            <column name="person_type" value="2"/>
+        </insert>
 
     </changeSet>
 </databaseChangeLog>
