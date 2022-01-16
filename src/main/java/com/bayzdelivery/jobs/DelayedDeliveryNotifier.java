@@ -1,16 +1,14 @@
 package com.bayzdelivery.jobs;
 
 import com.bayzdelivery.configuration.DeliveryConsts;
+import com.bayzdelivery.model.Order;
 import com.bayzdelivery.service.OrderService;
-import com.sun.xml.bind.v2.runtime.reflect.opt.Const;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import com.bayzdelivery.model.Order;
 
 import java.util.List;
 

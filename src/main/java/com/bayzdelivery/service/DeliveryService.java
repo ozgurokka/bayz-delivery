@@ -4,7 +4,6 @@ import com.bayzdelivery.model.Delivery;
 import com.bayzdelivery.model.ResponseModelTopDelivery;
 
 import java.time.Instant;
-import java.util.List;
 
 public interface DeliveryService {
 

@@ -19,6 +19,7 @@ public class Person implements Serializable{
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @JsonView(View.General.class)
   Long id;
 
   @Column(name = "name")

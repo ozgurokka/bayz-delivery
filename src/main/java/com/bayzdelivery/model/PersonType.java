@@ -1,5 +1,7 @@
 package com.bayzdelivery.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -12,6 +14,11 @@ public class PersonType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
+    @Column(name = "name")
+    @JsonIgnore
+    String name;
+
 
     @Override
     public String toString() {
@@ -50,9 +57,5 @@ public class PersonType {
     public void setName(String name) {
         this.name = name;
     }
-
-    @Column(name = "name")
-    String name;
-
 
 }

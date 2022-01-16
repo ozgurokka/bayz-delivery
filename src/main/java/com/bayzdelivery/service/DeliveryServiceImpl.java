@@ -1,22 +1,19 @@
 package com.bayzdelivery.service;
 
-import java.math.BigDecimal;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import com.bayzdelivery.configuration.DeliveryConsts;
+import com.bayzdelivery.model.Delivery;
 import com.bayzdelivery.model.Order;
-import com.bayzdelivery.model.Person;
 import com.bayzdelivery.model.ResponseModelTopDelivery;
 import com.bayzdelivery.repositories.DeliveryRepository;
-import com.bayzdelivery.model.Delivery;
 import com.bayzdelivery.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.Optional;
 
 @Service
 public class DeliveryServiceImpl implements DeliveryService {

@@ -5,6 +5,6 @@ package com.bayzdelivery.configuration;
  */
 public class View {
     public static class General{}
-    public static class OrderView extends  General{}
-    public static class DeliveryView extends  General{}
+    public static class GiverOrderView extends  General{}
+    public static class CreateDeliveryView extends  General{}
 }

@@ -10,8 +10,6 @@ import java.util.List;
 
 @RestResource(exported = false)
 public interface DeliveryRepository extends PagingAndSortingRepository<Delivery, Long> {
-    //List<DeliveryOrder> findOrdersByOrderTimeBetweenAndAndDeliveryManNotNull(Instant start, Instant end, Pageable pageable);
-    //List<Delivery> findOrdersByOrderTimeBetweenAndEndTimeNotNull(Instant start, Instant end, Pageable pageable);
     List<Delivery> findDeliveriesByEndTimeBetween(Instant start, Instant end, Pageable pageable);
 }
 

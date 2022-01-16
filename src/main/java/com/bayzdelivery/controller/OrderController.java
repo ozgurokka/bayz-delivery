@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Instant;
 import java.util.List;
 
 /**
@@ -21,7 +20,7 @@ public class OrderController {
     OrderService orderService;
 
     @PostMapping(path = "/api/order")
-    public ResponseEntity<Order> giveOrder(@RequestBody Order o) {
+    public ResponseEntity<Order> giveOrder(@RequestBody @JsonView(value = View.GiverOrderView.class) Order o) {
         return ResponseEntity.ok(orderService.save(o));
     }
 

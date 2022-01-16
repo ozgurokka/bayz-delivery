@@ -24,19 +24,27 @@ public class Order implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView(View.General.class)
     Long id;
 
     @Column(name = "item")
+    @JsonView(View.GiverOrderView.class)
+    @NotNull
     String item;
 
+    @JsonView(View.GiverOrderView.class)
+    @NotNull
     @Column(name = "price")
     BigDecimal price;
 
-
+    @JsonView(View.GiverOrderView.class)
+    @NotNull
     @Column(name = "order_time")
     Instant orderTime;
 
     @ManyToOne
+    @JsonView(View.GiverOrderView.class)
+    @NotNull
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     Person customer;
 

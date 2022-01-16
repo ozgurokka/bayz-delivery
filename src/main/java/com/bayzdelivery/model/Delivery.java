@@ -21,40 +21,44 @@ public class Delivery implements Serializable{
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @JsonView(View.General.class)
+  @NotNull
+  @JsonView(View.CreateDeliveryView.class)
   Long id;
 
-  @NotNull
   @Column(name = "start_time")
-  @JsonView(View.DeliveryView.class)
+  @NotNull
+  @JsonView(View.CreateDeliveryView.class)
   Instant startTime;
 
-  @NotNull
-  @JsonView(View.DeliveryView.class)
   @Column(name = "end_time")
+  @NotNull
+  @JsonView(View.CreateDeliveryView.class)
   Instant endTime;
 
   @Column(name = "distance")
-  @JsonView(View.DeliveryView.class)
+  @NotNull
+  @JsonView(View.CreateDeliveryView.class)
   Long distance;
 
   @Column(name = "comission")
-  @JsonView(View.DeliveryView.class)
   BigDecimal comission;
 
   @ManyToOne
   @JoinColumn(name = "delivery_man_id", referencedColumnName = "id")
-  @JsonView(View.General.class)
+  @NotNull
+  @JsonView(View.CreateDeliveryView.class)
   Person deliveryMan;
 
   @ManyToOne
   @JoinColumn(name = "customer_id", referencedColumnName = "id")
-  @JsonView(View.General.class)
+  @NotNull
+  @JsonView(View.CreateDeliveryView.class)
   Person customer;
 
   @OneToOne
   @JoinColumn(name = "order_id", referencedColumnName = "id")
-  @JsonView(View.General.class)
+  @NotNull
+  @JsonView(View.CreateDeliveryView.class)
   Order order;
 
 

@@ -2,20 +2,14 @@ package com.bayzdelivery.controller;
 
 import com.bayzdelivery.configuration.View;
 import com.bayzdelivery.model.Delivery;
-import com.bayzdelivery.model.Order;
 import com.bayzdelivery.model.ResponseModelTopDelivery;
+import com.bayzdelivery.service.DeliveryService;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import com.bayzdelivery.service.DeliveryService;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
-import java.util.List;
 
 @RestController
 public class DeliveryController {
@@ -24,7 +18,7 @@ public class DeliveryController {
   DeliveryService deliveryService;
 
   @PostMapping(path ="/api/delivery")
-  public ResponseEntity<Delivery> createNewDelivery(@RequestBody Delivery delivery) {
+  public ResponseEntity<Delivery> createNewDelivery(@RequestBody @JsonView(value = View.CreateDeliveryView.class) Delivery delivery) {
     return ResponseEntity.ok(deliveryService.save(delivery));
   }
 
