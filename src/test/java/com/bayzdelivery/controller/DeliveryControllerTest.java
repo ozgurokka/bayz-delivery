@@ -4,15 +4,10 @@ import com.bayzdelivery.model.Delivery;
 import com.bayzdelivery.model.Person;
 import com.bayzdelivery.model.PersonType;
 import com.bayzdelivery.repositories.DeliveryRepository;
-import com.bayzdelivery.repositories.PersonRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.swagger.models.auth.In;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -26,11 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.math.BigDecimal;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -52,8 +43,6 @@ public class DeliveryControllerTest {
     @Autowired
     private TestRestTemplate template;
 
-    @Autowired
-    DeliveryRepository deliveryRepository;
 
     private static ObjectMapper mapper = new ObjectMapper();
 
@@ -66,32 +55,16 @@ public class DeliveryControllerTest {
     @Test
     public void testSaveDelivery() throws Exception {
 
-
-        PersonType personCustomer = new PersonType();
-        personCustomer.setId(1L);
-        personCustomer.setName("1");
-
-        PersonType deliverMan = new PersonType();
-        deliverMan.setId(1L);
-        deliverMan.setName("1");
-
         Person p1 = new Person();
-        p1.setEmail("okka@gmail.com");
         p1.setId((long) 1);
-        p1.setName("Ozgur");
-        p1.setRegistrationNumber("1");
-        p1.setPersonType(personCustomer);
+
 
         Person p2 = new Person();
-        p2.setEmail("josh@gmail.com");
         p2.setId((long) 1);
-        p2.setName("josh");
-        p2.setRegistrationNumber("2");
-        p2.setPersonType(deliverMan);
 
 
         Delivery delivery = new Delivery();
-        delivery.setComission(BigDecimal.ONE);
+
         delivery.setStartTime(null);
         delivery.setEndTime(null);
         delivery.setDistance(150L);
@@ -112,7 +85,7 @@ public class DeliveryControllerTest {
                 .andDo(print())
                 .andExpect(jsonPath("$.id", Matchers.equalTo(1)))
                 .andExpect(jsonPath("$.distance", Matchers.equalTo(150)))
-                .andExpect(jsonPath("$.deliveryMan.email", Matchers.equalTo("josh@gmail.com")));
+                .andExpect(jsonPath("$.deliveryMan.id", Matchers.equalTo(1)));
     }
 
     @Test

@@ -1,8 +1,8 @@
 package com.bayzdelivery.controller;
 
+import com.bayzdelivery.model.Order;
 import com.bayzdelivery.model.Person;
 import com.bayzdelivery.model.PersonType;
-import com.bayzdelivery.repositories.DeliveryRepository;
 import com.bayzdelivery.repositories.OrderRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.Matchers;
@@ -19,10 +19,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import com.bayzdelivery.model.Order;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,9 +44,6 @@ public class OrderControllerTest {
     @Autowired
     private TestRestTemplate template;
 
-    @Autowired
-    OrderRepository orderRepository;
-
     private static ObjectMapper mapper = new ObjectMapper();
 
 
@@ -60,20 +55,12 @@ public class OrderControllerTest {
     @Test
     public void testGiveOrder() throws Exception {
 
-        PersonType personType = new PersonType();
-        personType.setId(1L);
-        personType.setName("NAme");
 
         Person p = new Person();
-        p.setEmail("okka@gmail.com");
         p.setId((long) 1);
-        p.setName("Ozgur");
-        p.setRegistrationNumber("1");
-        p.setPersonType(personType);
 
         Order order = new Order();
 
-        order.setDeliverFlag(0);
         order.setId(1L);
         order.setPrice(new BigDecimal(10));
         order.setItem("iphone");
