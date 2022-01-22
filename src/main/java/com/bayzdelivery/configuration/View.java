@@ -7,4 +7,6 @@ public class View {
     public static class General{}
     public static class GiverOrderView extends  General{}
     public static class CreateDeliveryView extends  General{}
+    public static class deneme extends View.General {}
 }
+
